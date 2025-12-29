@@ -21,10 +21,10 @@
       --amber:#ffb24a;
       --green:#52d08f;
 
-      /* Neon jungle glow accents */
-      --neonA:#52d08f;   /* core green */
-      --neonB:#00ffb7;   /* mint neon halo */
-      --neonC:#b86bff;   /* violet rim glow */
+      /* Neon jungle accents */
+      --neonMint:#00ffb7;
+      --neonGreen:#52d08f;
+      --neonViolet:#b86bff;
 
       --radius:20px;
       --radius2:28px;
@@ -49,28 +49,41 @@
       overflow-x:hidden;
     }
 
-    /* MONSTERA BACKGROUND — NEON JUNGLE GLOW */
+    /* Neon drift animation for the background layers */
+    @keyframes jungleDrift {
+      0%   { transform: translate3d(0,0,0) scale(1); }
+      50%  { transform: translate3d(-18px, 10px, 0) scale(1.02); }
+      100% { transform: translate3d(0,0,0) scale(1); }
+    }
+    @keyframes jungleDrift2 {
+      0%   { transform: translate3d(0,0,0) scale(1); }
+      50%  { transform: translate3d(14px, -12px, 0) scale(1.03); }
+      100% { transform: translate3d(0,0,0) scale(1); }
+    }
+
+    /* MONSTERA BACKGROUND — IMPACTFUL NEON JUNGLE */
     body::before{
       content:"";
       position:fixed;
-      inset:-220px;
+      inset:-260px;
       z-index:-2;
       pointer-events:none;
 
-      /* Layered neon light pools behind the leaf pattern */
+      /* BIG leaves, readable behind cards */
       background-image:
-        radial-gradient(600px 420px at 18% 18%, rgba(0,255,183,.14), transparent 62%),
-        radial-gradient(560px 420px at 82% 22%, rgba(184,107,255,.12), transparent 64%),
-        radial-gradient(720px 520px at 50% 78%, rgba(82,208,143,.12), transparent 65%),
+        /* neon light pools */
+        radial-gradient(820px 560px at 18% 18%, rgba(0,255,183,.14), transparent 62%),
+        radial-gradient(760px 540px at 84% 20%, rgba(184,107,255,.12), transparent 64%),
+        radial-gradient(980px 680px at 55% 85%, rgba(82,208,143,.12), transparent 66%),
 
-        /* Leaf line art pattern (kept) */
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%2300ffb7' stroke-opacity='0.75' stroke-width='2.4'%3E%3Cpath d='M315 90c-63 6-114 47-131 96-17 48-4 90 25 122 30 33 73 56 121 62 55 7 104-11 132-45 27-33 35-79 20-122-14-41-52-86-108-107-20-7-40-9-59-6Z'/%3E%3Cpath d='M315 110c-18 52-18 160 0 240'/%3E%3Cpath d='M252 182c26 12 52 21 78 26'/%3E%3Cpath d='M250 240c28 12 56 20 84 24'/%3E%3Cpath d='M258 294c25 10 50 16 76 18'/%3E%3C/g%3E%3C/svg%3E");
+        /* crisp neon leaf outline */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='680' height='680' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%2300ffb7' stroke-opacity='0.92' stroke-width='3.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M315 90c-63 6-114 47-131 96-17 48-4 90 25 122 30 33 73 56 121 62 55 7 104-11 132-45 27-33 35-79 20-122-14-41-52-86-108-107-20-7-40-9-59-6Z'/%3E%3Cpath d='M315 110c-18 52-18 160 0 240'/%3E%3Cpath d='M252 182c26 12 52 21 78 26'/%3E%3Cpath d='M250 240c28 12 56 20 84 24'/%3E%3Cpath d='M258 294c25 10 50 16 76 18'/%3E%3C/g%3E%3C/svg%3E");
 
       background-size:
         auto,
         auto,
         auto,
-        520px 520px;
+        820px 820px;
 
       background-repeat:
         no-repeat,
@@ -78,22 +91,59 @@
         no-repeat,
         repeat;
 
+      /* Spread the leaves so it doesn't read as circles */
       background-position:
-        10% 10%,
+        12% 10%,
         92% 12%,
-        50% 86%,
-        20% 30%;
+        55% 90%,
+        12% 22%;
 
-      /* Boost visibility + neon feel */
-      opacity:.34;
+      /* More visible, more neon */
+      opacity:.52;
 
-      /* The “neon sign” trick: blur + multiple glows */
+      /* Neon sign glow stack */
       filter:
+        saturate(1.45)
+        brightness(1.20)
+        drop-shadow(0 0 10px rgba(0,255,183,.45))
+        drop-shadow(0 0 22px rgba(0,255,183,.30))
+        drop-shadow(0 0 34px rgba(184,107,255,.22));
+
+      animation: jungleDrift 14s ease-in-out infinite;
+    }
+
+    /* Second layer: soft halo so it feels like NEON leaves, not a pattern */
+    body::after{
+      content:"";
+      position:fixed;
+      inset:-320px;
+      z-index:-3;
+      pointer-events:none;
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='720' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%2352d08f' stroke-opacity='0.55' stroke-width='6.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M315 90c-63 6-114 47-131 96-17 48-4 90 25 122 30 33 73 56 121 62 55 7 104-11 132-45 27-33 35-79 20-122-14-41-52-86-108-107-20-7-40-9-59-6Z'/%3E%3Cpath d='M315 110c-18 52-18 160 0 240'/%3E%3Cpath d='M252 182c26 12 52 21 78 26'/%3E%3Cpath d='M250 240c28 12 56 20 84 24'/%3E%3Cpath d='M258 294c25 10 50 16 76 18'/%3E%3C/g%3E%3C/svg%3E"),
+        radial-gradient(980px 720px at 40% 60%, rgba(0,255,183,.10), transparent 70%);
+
+      background-size:
+        980px 980px,
+        auto;
+
+      background-repeat:
+        repeat,
+        no-repeat;
+
+      background-position:
+        28% 38%,
+        50% 60%;
+
+      opacity:.22;
+
+      filter:
+        blur(2px)
         saturate(1.35)
-        brightness(1.12)
-        drop-shadow(0 0 10px rgba(0,255,183,.30))
-        drop-shadow(0 0 22px rgba(0,255,183,.20))
-        drop-shadow(0 0 28px rgba(184,107,255,.14));
+        drop-shadow(0 0 26px rgba(82,208,143,.35));
+
+      animation: jungleDrift2 18s ease-in-out infinite;
     }
 
     header{
@@ -363,4 +413,5 @@ Our goal is simple: to show reptiles as they truly are—fascinating, intelligen
 </script>
 </body>
 </html>
+
 
