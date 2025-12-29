@@ -20,8 +20,8 @@
       --violet:#b86bff;
       --amber:#ffb24a;
 
-      /* NEW: neon pink */
       --neonPink:#ff4fd8;
+      --pinkGlow:0 0 14px rgba(255,79,216,.55);
 
       --radius:20px;
       --radius2:28px;
@@ -29,7 +29,6 @@
 
       --shadow:0 20px 60px rgba(0,0,0,.55);
       --glow:0 0 30px rgba(184,107,255,.25);
-      --pinkGlow:0 0 14px rgba(255,79,216,.55);
     }
 
     *{box-sizing:border-box}
@@ -47,31 +46,26 @@
       overflow-x:hidden;
     }
 
-    @keyframes jungleFloat {
-      0%   { transform: translate3d(0,0,0) scale(1); }
-      50%  { transform: translate3d(-16px, 12px, 0) scale(1.03); }
-      100% { transform: translate3d(0,0,0) scale(1); }
+    @keyframes jungleFloat{
+      0%{transform:translate3d(0,0,0) scale(1)}
+      50%{transform:translate3d(-16px,12px,0) scale(1.03)}
+      100%{transform:translate3d(0,0,0) scale(1)}
     }
 
-    /* MONSTERA BACKGROUND */
     body::before{
       content:"";
       position:fixed;
       inset:-220px;
       z-index:-2;
       pointer-events:none;
-
       background-image:
         radial-gradient(700px 520px at 18% 18%, rgba(0,255,183,.22), transparent 60%),
         radial-gradient(680px 520px at 82% 22%, rgba(184,107,255,.20), transparent 62%),
         url("assets/images/monstera.jpg");
-
       background-repeat:no-repeat,no-repeat,repeat;
       background-size:auto,auto,720px 720px;
       background-position:12% 14%,88% 18%,20% 30%;
-
       opacity:.55;
-
       filter:
         saturate(1.65)
         brightness(1.15)
@@ -79,7 +73,6 @@
         drop-shadow(0 0 18px rgba(0,255,183,.55))
         drop-shadow(0 0 36px rgba(0,255,183,.35))
         drop-shadow(0 0 48px rgba(184,107,255,.25));
-
       animation:jungleFloat 18s ease-in-out infinite;
     }
 
@@ -109,7 +102,6 @@
       box-shadow:var(--glow);
     }
 
-    /* NAV LINKS — NEON PINK */
     nav{margin-left:auto;display:flex;gap:14px}
     nav a{
       color:var(--neonPink);
@@ -118,12 +110,9 @@
       padding:8px 10px;
       border-radius:999px;
       text-shadow:var(--pinkGlow);
-    }
-    nav a:hover{
-      background:rgba(255,79,216,.12);
+      text-decoration:none;
     }
 
-    /* FOLLOW BUTTON */
     .follow{
       padding:10px 14px;
       border-radius:999px;
@@ -132,6 +121,7 @@
       border:1px solid rgba(255,79,216,.45);
       background:rgba(255,79,216,.08);
       box-shadow:var(--pinkGlow);
+      text-decoration:none;
     }
 
     .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
@@ -143,7 +133,7 @@
       gap:20px;
       align-items:center;
     }
-    @media (min-width:900px){
+    @media(min-width:900px){
       .hero-grid{grid-template-columns:.9fr 1.1fr}
     }
 
@@ -186,7 +176,6 @@
 
     .pill{
       display:inline-flex;
-      gap:8px;
       padding:8px 12px;
       border-radius:999px;
       background:rgba(0,0,0,.28);
@@ -199,33 +188,11 @@
       margin:14px 0 10px;
       font-size:52px;
       line-height:1.02;
-      letter-spacing:-.9px;
     }
 
     .sub{
       color:rgba(238,242,248,.82);
       font-size:16.5px;
-      max-width:720px;
-    }
-
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-
-    /* ACTION LINKS — NEON PINK */
-    .btn{
-      padding:12px 18px;
-      border-radius:999px;
-      font-weight:900;
-      color:var(--neonPink);
-      border:1px solid rgba(255,79,216,.45);
-      background:rgba(255,79,216,.08);
-      box-shadow:var(--pinkGlow);
-    }
-
-    .primary{
-      color:#07090c;
-      background:linear-gradient(135deg,var(--neonPink),var(--amber));
-      border:none;
-      box-shadow:0 16px 60px rgba(255,79,216,.35);
     }
 
     section{padding:40px 0}
@@ -248,23 +215,12 @@
       gap:8px;
     }
 
-    /* TEXT LINKS — NEON PINK */
-    a{
-      color:var(--neonPink);
-      text-shadow:var(--pinkGlow);
-    }
-
     footer{
       padding:26px 0 36px;
       text-align:center;
       color:var(--muted);
       border-top:1px solid rgba(255,255,255,.06);
       margin-top:18px;
-    }
-
-    @media (max-width:900px){
-      nav{display:none}
-      h1{font-size:42px}
     }
   </style>
 </head>
@@ -299,10 +255,6 @@
         We share the routines, the builds, and the learning curve — welfare-first —
         while building toward custom habitat design and a future shop.
       </p>
-      <div class="actions">
-        <a class="btn primary" href="https://instagram.com/johnnys.exotics" target="_blank">Follow on Instagram</a>
-        <a class="btn" href="#crew">Meet the crew</a>
-      </div>
     </div>
 
   </div>
@@ -310,7 +262,45 @@
 
 <section id="about">
   <h2>Who we are</h2>
-  <p>Education-first. Animal welfare always.</p>
+  <p>
+    We’re a Sparks, Nevada–based reptile room built around calm handling, clean environments, and consistent routines. Johnny’s Exotics began as a kid’s passion for reptiles and has grown into a carefully maintained space where animal welfare and education come first.
+Every reptile in our care is supported with proper habitats, enrichment, and daily observation. We focus on understanding behavior, respecting boundaries, and creating low-stress environments that allow animals to thrive.
+Our goal is simple: to show reptiles as they truly are—fascinating, intelligent, and deserving of thoughtful care. Through shared moments and close-up views, we aim to help others learn, appreciate, and see these animals in a new light.
+  </p>
+  <p class="muted"><strong>Education-first. Animal welfare always.</strong></p>
+</section>
+
+<section id="crew">
+  <h2>Our inhabitants</h2>
+  <div class="roster">
+    <div class="chip"><strong>'Ace'</strong><span>Ackie Monitor</span></div>
+
+    <div class="chip"><strong>'Coco'</strong><span>Ball Python</span></div>
+    <div class="chip"><strong>'Py'</strong><span>Ball Python</span></div>
+
+    <div class="chip"><strong>'Cheddar'</strong><span>Bearded Dragon</span></div>
+
+    <div class="chip"><strong>'Fireball'</strong><span>Corn Snake</span></div>
+
+    <div class="chip"><strong>'Tank'</strong><span>Crested Gecko</span></div>
+
+    <div class="chip"><strong>'Diablo'</strong><span>Fireleg Tarantula</span></div>
+
+    <div class="chip"><strong>'Woody'</strong><span>Gargoyle Gecko</span></div>
+
+    <div class="chip"><strong>'Hershey'</strong><span>Giant Chocolate Millipede</span></div>
+
+    <div class="chip"><strong>'Rex'</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>'Doty'</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>'Sunny'</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>'Domino'</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>'Ghost'</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>'Stormy'</strong><span>Leopard Gecko</span></div>
+
+    <div class="chip"><strong>'Smiley'</strong><span>Regal Jumping Spider</span></div>
+
+    <div class="chip"><strong>'Rango'</strong><span>Veiled Chameleon</span></div>
+  </div>
 </section>
 
 <section id="contact">
@@ -327,6 +317,7 @@
 </script>
 </body>
 </html>
+
 
 
 
