@@ -20,6 +20,7 @@
       --violet:#b86bff;
       --amber:#ffb24a;
 
+      /* Neon pink links */
       --neonPink:#ff4fd8;
       --pinkGlow:0 0 14px rgba(255,79,216,.55);
 
@@ -46,26 +47,46 @@
       overflow-x:hidden;
     }
 
-    @keyframes jungleFloat{
-      0%{transform:translate3d(0,0,0) scale(1)}
-      50%{transform:translate3d(-16px,12px,0) scale(1.03)}
-      100%{transform:translate3d(0,0,0) scale(1)}
+    /* SLOW NEON DRIFT */
+    @keyframes jungleFloat {
+      0%   { transform: translate3d(0,0,0) scale(1); }
+      50%  { transform: translate3d(-16px, 12px, 0) scale(1.03); }
+      100% { transform: translate3d(0,0,0) scale(1); }
     }
 
+    /* MONSTERA BACKGROUND — REAL IMAGE, NEON JUNGLE */
     body::before{
       content:"";
       position:fixed;
       inset:-220px;
       z-index:-2;
       pointer-events:none;
+
       background-image:
+        /* neon light pools */
         radial-gradient(700px 520px at 18% 18%, rgba(0,255,183,.22), transparent 60%),
         radial-gradient(680px 520px at 82% 22%, rgba(184,107,255,.20), transparent 62%),
+
+        /* REAL MONSTERA IMAGE */
         url("assets/images/monstera.jpg");
-      background-repeat:no-repeat,no-repeat,repeat;
-      background-size:auto,auto,720px 720px;
-      background-position:12% 14%,88% 18%,20% 30%;
+
+      background-repeat:
+        no-repeat,
+        no-repeat,
+        repeat;
+
+      background-size:
+        auto,
+        auto,
+        720px 720px; /* BIG so leaves read clearly */
+
+      background-position:
+        12% 14%,
+        88% 18%,
+        20% 30%;
+
       opacity:.55;
+
       filter:
         saturate(1.65)
         brightness(1.15)
@@ -73,7 +94,8 @@
         drop-shadow(0 0 18px rgba(0,255,183,.55))
         drop-shadow(0 0 36px rgba(0,255,183,.35))
         drop-shadow(0 0 48px rgba(184,107,255,.25));
-      animation:jungleFloat 18s ease-in-out infinite;
+
+      animation: jungleFloat 18s ease-in-out infinite;
     }
 
     header{
@@ -102,6 +124,7 @@
       box-shadow:var(--glow);
     }
 
+    /* NAV LINKS — NEON PINK */
     nav{margin-left:auto;display:flex;gap:14px}
     nav a{
       color:var(--neonPink);
@@ -112,7 +135,11 @@
       text-shadow:var(--pinkGlow);
       text-decoration:none;
     }
+    nav a:hover{
+      background:rgba(255,79,216,.12);
+    }
 
+    /* FOLLOW BUTTON — NEON PINK */
     .follow{
       padding:10px 14px;
       border-radius:999px;
@@ -126,6 +153,7 @@
 
     .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
 
+    /* HERO */
     .hero{padding:30px 0 40px}
 
     .hero-grid{
@@ -133,10 +161,11 @@
       gap:20px;
       align-items:center;
     }
-    @media(min-width:900px){
+    @media (min-width:900px){
       .hero-grid{grid-template-columns:.9fr 1.1fr}
     }
 
+    /* LEFT: PORTRAIT */
     .portrait-card{
       border-radius:var(--radius2);
       border:1px solid rgba(255,255,255,.10);
@@ -158,6 +187,7 @@
       box-shadow:0 18px 50px rgba(0,0,0,.45);
     }
 
+    /* NO CROPPING — EVER */
     .portrait-frame img{
       width:100%;
       height:auto;
@@ -165,6 +195,7 @@
       object-fit:contain;
     }
 
+    /* RIGHT: COPY */
     .hero-copy{
       border-radius:var(--radius2);
       border:1px solid rgba(255,255,255,.10);
@@ -176,23 +207,49 @@
 
     .pill{
       display:inline-flex;
+      gap:8px;
       padding:8px 12px;
       border-radius:999px;
       background:rgba(0,0,0,.28);
       border:1px solid rgba(255,255,255,.12);
       font-weight:800;
       font-size:13px;
+      color:rgba(238,242,248,.88);
     }
 
     h1{
       margin:14px 0 10px;
       font-size:52px;
       line-height:1.02;
+      letter-spacing:-.9px;
     }
 
     .sub{
       color:rgba(238,242,248,.82);
       font-size:16.5px;
+      max-width:720px;
+    }
+
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+
+    /* BUTTONS — NEON PINK */
+    .btn{
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:900;
+      color:var(--neonPink);
+      border:1px solid rgba(255,79,216,.45);
+      background:rgba(255,79,216,.08);
+      box-shadow:var(--pinkGlow);
+      text-decoration:none;
+      display:inline-block;
+    }
+
+    .primary{
+      border:none;
+      color:#07090c;
+      background:linear-gradient(135deg,var(--neonPink),var(--amber));
+      box-shadow:0 16px 60px rgba(255,79,216,.35);
     }
 
     section{padding:40px 0}
@@ -215,12 +272,23 @@
       gap:8px;
     }
 
+    /* TEXT LINKS — NEON PINK */
+    a{
+      color:var(--neonPink);
+      text-shadow:var(--pinkGlow);
+    }
+
     footer{
       padding:26px 0 36px;
       text-align:center;
       color:var(--muted);
       border-top:1px solid rgba(255,255,255,.06);
       margin-top:18px;
+    }
+
+    @media (max-width:900px){
+      nav{display:none}
+      h1{font-size:42px}
     }
   </style>
 </head>
@@ -241,12 +309,14 @@
 <section class="hero">
   <div class="hero-grid">
 
+    <!-- LEFT: PORTRAIT -->
     <div class="portrait-card">
       <div class="portrait-frame">
         <img src="assets/images/hero.jpg" alt="Johnny in the reptile room with some of the animals">
       </div>
     </div>
 
+    <!-- RIGHT: TEXT -->
     <div class="hero-copy">
       <span class="pill">Sparks, Nevada • Reptile Room</span>
       <h1>Respectful husbandry.<br>Real reptile life.</h1>
@@ -255,6 +325,10 @@
         We share the routines, the builds, and the learning curve — welfare-first —
         while building toward custom habitat design and a future shop.
       </p>
+      <div class="actions">
+        <a class="btn primary" href="https://instagram.com/johnnys.exotics" target="_blank">Follow on Instagram</a>
+        <a class="btn" href="#crew">Meet the crew</a>
+      </div>
     </div>
 
   </div>
@@ -273,33 +347,24 @@ Our goal is simple: to show reptiles as they truly are—fascinating, intelligen
 <section id="crew">
   <h2>Our inhabitants</h2>
   <div class="roster">
-    <div class="chip"><strong>'Ace'</strong><span>Ackie Monitor</span></div>
-
     <div class="chip"><strong>'Coco'</strong><span>Ball Python</span></div>
     <div class="chip"><strong>'Py'</strong><span>Ball Python</span></div>
-
+    <div class="chip"><strong>'Ace'</strong><span>Ackie Monitor</span></div>
+    <div class="chip"><strong>'Rango'</strong><span>Veiled Chameleon</span></div>
     <div class="chip"><strong>'Cheddar'</strong><span>Bearded Dragon</span></div>
-
-    <div class="chip"><strong>'Fireball'</strong><span>Corn Snake</span></div>
-
-    <div class="chip"><strong>'Tank'</strong><span>Crested Gecko</span></div>
-
-    <div class="chip"><strong>'Diablo'</strong><span>Fireleg Tarantula</span></div>
-
     <div class="chip"><strong>'Woody'</strong><span>Gargoyle Gecko</span></div>
-
-    <div class="chip"><strong>'Hershey'</strong><span>Giant Chocolate Millipede</span></div>
-
     <div class="chip"><strong>'Rex'</strong><span>Leopard Gecko</span></div>
     <div class="chip"><strong>'Doty'</strong><span>Leopard Gecko</span></div>
     <div class="chip"><strong>'Sunny'</strong><span>Leopard Gecko</span></div>
     <div class="chip"><strong>'Domino'</strong><span>Leopard Gecko</span></div>
     <div class="chip"><strong>'Ghost'</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>'Fireball'</strong><span>Corn Snake</span></div>
     <div class="chip"><strong>'Stormy'</strong><span>Leopard Gecko</span></div>
-
+    <div class="chip"><strong>'Diablo'</strong><span>Fireleg Tarantula</span></div>
+    <div class="chip"><strong>'Fuego'</strong><span>Redknee Tarantula</span></div>
     <div class="chip"><strong>'Smiley'</strong><span>Regal Jumping Spider</span></div>
-
-    <div class="chip"><strong>'Rango'</strong><span>Veiled Chameleon</span></div>
+    <div class="chip"><strong>'Hershey'</strong><span>Giant Chocolate Millipede</span></div>
+    <div class="chip"><strong>'Tank'</strong><span>Crested Gecko</span></div>
   </div>
 </section>
 
@@ -312,12 +377,13 @@ Our goal is simple: to show reptiles as they truly are—fascinating, intelligen
   © <span id="year"></span> Johnny’s Exotics • Sparks, NV
 </footer>
 
+</main>
+
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
-
 
 
 
