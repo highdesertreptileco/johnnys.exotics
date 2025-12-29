@@ -44,18 +44,35 @@
       overflow-x:hidden;
     }
 
-    /* MONSTERA BACKGROUND */
+    /* MONSTERA ATMOSPHERE — NATURAL, ROOM-LIKE */
     body::before{
       content:"";
       position:fixed;
-      inset:-200px;
+      inset:-180px;
       z-index:-2;
-      opacity:.22;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%2352d08f' stroke-opacity='0.55' stroke-width='2'%3E%3Cpath d='M315 90c-63 6-114 47-131 96-17 48-4 90 25 122 30 33 73 56 121 62 55 7 104-11 132-45 27-33 35-79 20-122-14-41-52-86-108-107-20-7-40-9-59-6Z'/%3E%3Cpath d='M315 110c-18 52-18 160 0 240'/%3E%3Cpath d='M252 182c26 12 52 21 78 26'/%3E%3Cpath d='M250 240c28 12 56 20 84 24'/%3E%3Cpath d='M258 294c25 10 50 16 76 18'/%3E%3C/g%3E%3C/svg%3E");
-      background-size:520px 520px;
-      background-repeat:repeat;
-      background-position:20% 30%;
       pointer-events:none;
+
+      background-image:
+        radial-gradient(800px 600px at 10% 20%, rgba(82,208,143,.18), transparent 60%),
+        radial-gradient(700px 520px at 85% 30%, rgba(82,208,143,.14), transparent 65%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%2352d08f' stroke-opacity='0.45' stroke-width='2'%3E%3Cpath d='M315 90c-63 6-114 47-131 96-17 48-4 90 25 122 30 33 73 56 121 62 55 7 104-11 132-45 27-33 35-79 20-122-14-41-52-86-108-107-20-7-40-9-59-6Z'/%3E%3Cpath d='M315 110c-18 52-18 160 0 240'/%3E%3Cpath d='M252 182c26 12 52 21 78 26'/%3E%3Cpath d='M250 240c28 12 56 20 84 24'/%3E%3Cpath d='M258 294c25 10 50 16 76 18'/%3E%3C/g%3E%3C/svg%3E");
+
+      background-size:
+        auto,
+        auto,
+        620px 620px;
+
+      background-repeat:
+        no-repeat,
+        no-repeat,
+        repeat;
+
+      background-position:
+        left top,
+        right center,
+        22% 35%;
+
+      opacity:.16;
     }
 
     header{
@@ -117,7 +134,6 @@
       .hero-grid{grid-template-columns:.9fr 1.1fr}
     }
 
-    /* LEFT: PORTRAIT */
     .portrait-card{
       border-radius:var(--radius2);
       border:1px solid rgba(255,255,255,.10);
@@ -139,7 +155,6 @@
       box-shadow:0 18px 50px rgba(0,0,0,.45);
     }
 
-    /* NO CROPPING — EVER */
     .portrait-frame img{
       width:100%;
       height:auto;
@@ -147,7 +162,6 @@
       object-fit:contain;
     }
 
-    /* RIGHT: COPY */
     .hero-copy{
       border-radius:var(--radius2);
       border:1px solid rgba(255,255,255,.10);
@@ -166,7 +180,6 @@
       border:1px solid rgba(255,255,255,.12);
       font-weight:800;
       font-size:13px;
-      color:rgba(238,242,248,.88);
     }
 
     h1{
@@ -250,14 +263,12 @@
 <section class="hero">
   <div class="hero-grid">
 
-    <!-- LEFT: PORTRAIT -->
     <div class="portrait-card">
       <div class="portrait-frame">
         <img src="assets/images/hero.jpg" alt="Johnny in the reptile room with some of the animals">
       </div>
     </div>
 
-    <!-- RIGHT: TEXT -->
     <div class="hero-copy">
       <span class="pill">Sparks, Nevada • Reptile Room</span>
       <h1>Respectful husbandry.<br>Real reptile life.</h1>
@@ -278,9 +289,8 @@
 <section id="about">
   <h2>Who we are</h2>
   <p>
-    We’re a Sparks, Nevada–based reptile room built around calm handling, clean environments, and consistent routines. Johnny’s Exotics began as a kid’s passion for reptiles and has grown into a carefully maintained space where animal welfare and education come first.
-Every reptile in our care is supported with proper habitats, enrichment, and daily observation. We focus on understanding behavior, respecting boundaries, and creating low-stress environments that allow animals to thrive.
-Our goal is simple: to show reptiles as they truly are—fascinating, intelligent, and deserving of thoughtful care. Through shared moments and close-up views, we aim to help others learn, appreciate, and see these animals in a new light.
+    We’re a Sparks, Nevada–based reptile room built around calm handling, clean environments,
+    and consistent routines. Animal welfare and education come first.
   </p>
   <p class="muted"><strong>Education-first. Animal welfare always.</strong></p>
 </section>
@@ -288,24 +298,24 @@ Our goal is simple: to show reptiles as they truly are—fascinating, intelligen
 <section id="crew">
   <h2>Our inhabitants</h2>
   <div class="roster">
-    <div class="chip"><strong>'Coco'</strong><span>Ball Python</span></div>
-    <div class="chip"><strong>'Py'</strong><span>Ball Python</span></div>
-    <div class="chip"><strong>'Ace'</strong><span>Ackie Monitor</span></div>
-    <div class="chip"><strong>'Rango'</strong><span>Veiled Chameleon</span></div>
-    <div class="chip"><strong>'Cheddar'</strong><span>Bearded Dragon</span></div>
-    <div class="chip"><strong>'Woody'</strong><span>Gargoyle Gecko</span></div>
-    <div class="chip"><strong>'Rex'</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>'Doty'</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>'Sunny'</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>'Domino'</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>'Ghost'</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>'Fireball'</strong><span>Corn Snake</span></div>
-    <div class="chip"><strong>'Stormy'</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>'Diablo'</strong><span>Fireleg Tarantula</span></div>
-    <div class="chip"><strong>'Fuego'</strong><span>Redknee Tarantula</span></div>
-    <div class="chip"><strong>'Smiley'</strong><span>Regal Jumping Spider</span></div>
-    <div class="chip"><strong>'Hershey'</strong><span>Giant Chocolate Millipede</span></div>
-    <div class="chip"><strong>'Tank'</strong><span>Crested Gecko</span></div>
+    <div class="chip"><strong>Coco</strong><span>Ball Python</span></div>
+    <div class="chip"><strong>Py</strong><span>Ball Python</span></div>
+    <div class="chip"><strong>Ace</strong><span>Ackie Monitor</span></div>
+    <div class="chip"><strong>Rango</strong><span>Veiled Chameleon</span></div>
+    <div class="chip"><strong>Cheddar</strong><span>Bearded Dragon</span></div>
+    <div class="chip"><strong>Woody</strong><span>Gargoyle Gecko</span></div>
+    <div class="chip"><strong>Rex</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>Doty</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>Sunny</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>Domino</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>Ghost</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>Stormy</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>Fireball</strong><span>Corn Snake</span></div>
+    <div class="chip"><strong>Diablo</strong><span>Fireleg Tarantula</span></div>
+    <div class="chip"><strong>Fuego</strong><span>Redknee Tarantula</span></div>
+    <div class="chip"><strong>Smiley</strong><span>Regal Jumping Spider</span></div>
+    <div class="chip"><strong>Hershey</strong><span>Giant Chocolate Millipede</span></div>
+    <div class="chip"><strong>Tank</strong><span>Crested Gecko</span></div>
   </div>
 </section>
 
@@ -325,3 +335,4 @@ Our goal is simple: to show reptiles as they truly are—fascinating, intelligen
 </script>
 </body>
 </html>
+
