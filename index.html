@@ -21,6 +21,11 @@
       --amber:#ffb24a;
       --green:#52d08f;
 
+      /* Neon jungle glow accents */
+      --neonA:#52d08f;   /* core green */
+      --neonB:#00ffb7;   /* mint neon halo */
+      --neonC:#b86bff;   /* violet rim glow */
+
       --radius:20px;
       --radius2:28px;
       --max:1120px;
@@ -44,18 +49,51 @@
       overflow-x:hidden;
     }
 
-    /* MONSTERA BACKGROUND */
+    /* MONSTERA BACKGROUND — NEON JUNGLE GLOW */
     body::before{
       content:"";
       position:fixed;
-      inset:-200px;
+      inset:-220px;
       z-index:-2;
-      opacity:.22;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%2352d08f' stroke-opacity='0.55' stroke-width='2'%3E%3Cpath d='M315 90c-63 6-114 47-131 96-17 48-4 90 25 122 30 33 73 56 121 62 55 7 104-11 132-45 27-33 35-79 20-122-14-41-52-86-108-107-20-7-40-9-59-6Z'/%3E%3Cpath d='M315 110c-18 52-18 160 0 240'/%3E%3Cpath d='M252 182c26 12 52 21 78 26'/%3E%3Cpath d='M250 240c28 12 56 20 84 24'/%3E%3Cpath d='M258 294c25 10 50 16 76 18'/%3E%3C/g%3E%3C/svg%3E");
-      background-size:520px 520px;
-      background-repeat:repeat;
-      background-position:20% 30%;
       pointer-events:none;
+
+      /* Layered neon light pools behind the leaf pattern */
+      background-image:
+        radial-gradient(600px 420px at 18% 18%, rgba(0,255,183,.14), transparent 62%),
+        radial-gradient(560px 420px at 82% 22%, rgba(184,107,255,.12), transparent 64%),
+        radial-gradient(720px 520px at 50% 78%, rgba(82,208,143,.12), transparent 65%),
+
+        /* Leaf line art pattern (kept) */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%2300ffb7' stroke-opacity='0.75' stroke-width='2.4'%3E%3Cpath d='M315 90c-63 6-114 47-131 96-17 48-4 90 25 122 30 33 73 56 121 62 55 7 104-11 132-45 27-33 35-79 20-122-14-41-52-86-108-107-20-7-40-9-59-6Z'/%3E%3Cpath d='M315 110c-18 52-18 160 0 240'/%3E%3Cpath d='M252 182c26 12 52 21 78 26'/%3E%3Cpath d='M250 240c28 12 56 20 84 24'/%3E%3Cpath d='M258 294c25 10 50 16 76 18'/%3E%3C/g%3E%3C/svg%3E");
+
+      background-size:
+        auto,
+        auto,
+        auto,
+        520px 520px;
+
+      background-repeat:
+        no-repeat,
+        no-repeat,
+        no-repeat,
+        repeat;
+
+      background-position:
+        10% 10%,
+        92% 12%,
+        50% 86%,
+        20% 30%;
+
+      /* Boost visibility + neon feel */
+      opacity:.34;
+
+      /* The “neon sign” trick: blur + multiple glows */
+      filter:
+        saturate(1.35)
+        brightness(1.12)
+        drop-shadow(0 0 10px rgba(0,255,183,.30))
+        drop-shadow(0 0 22px rgba(0,255,183,.20))
+        drop-shadow(0 0 28px rgba(184,107,255,.14));
     }
 
     header{
