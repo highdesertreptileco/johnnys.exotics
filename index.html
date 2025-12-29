@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Johnny’s Exotics — a family-run reptile room in Sparks, Nevada. Care-forward husbandry, education, and future custom habitat builds." />
+  <title>johnnys.exotics</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07090c;
+      --panel:rgba(16,18,24,.65);
+      --text:#eef2f8;
+      --muted:#aeb7c6;
+
+      --violet:#b86bff;
+      --amber:#ffb24a;
+      --green:#52d08f;
+
+      --radius:20px;
+      --radius2:28px;
+      --max:1120px;
+
+      --shadow:0 20px 60px rgba(0,0,0,.55);
+      --glow:0 0 30px rgba(184,107,255,.25);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      line-height:1.55;
+      background:
+        radial-gradient(900px 520px at 15% 0%, rgba(184,107,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 85% 10%, rgba(255,178,74,.10), transparent 55%),
+        radial-gradient(700px 420px at 50% 85%, rgba(82,208,143,.12), transparent 55%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+
+    /* MONSTERA BACKGROUND */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-200px;
+      z-index:-2;
+      opacity:.22;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='none' stroke='%2352d08f' stroke-opacity='0.55' stroke-width='2'%3E%3Cpath d='M315 90c-63 6-114 47-131 96-17 48-4 90 25 122 30 33 73 56 121 62 55 7 104-11 132-45 27-33 35-79 20-122-14-41-52-86-108-107-20-7-40-9-59-6Z'/%3E%3Cpath d='M315 110c-18 52-18 160 0 240'/%3E%3Cpath d='M252 182c26 12 52 21 78 26'/%3E%3Cpath d='M250 240c28 12 56 20 84 24'/%3E%3Cpath d='M258 294c25 10 50 16 76 18'/%3E%3C/g%3E%3C/svg%3E");
+      background-size:520px 520px;
+      background-repeat:repeat;
+      background-position:20% 30%;
+      pointer-events:none;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      padding:14px 18px;
+      background:rgba(7,9,12,.72);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .brand{
+      font-weight:900;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .brand-dot{
+      width:10px;height:10px;border-radius:999px;
+      background:linear-gradient(135deg,var(--violet),var(--amber));
+      box-shadow:var(--glow);
+    }
+
+    nav{margin-left:auto;display:flex;gap:14px}
+    nav a{
+      color:var(--muted);
+      font-weight:800;
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:999px;
+    }
+    nav a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+
+    .follow{
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(184,107,255,.16), rgba(255,178,74,.08));
+      box-shadow:var(--glow);
+    }
+
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+
+    /* HERO */
+    .hero{padding:30px 0 40px}
+
+    .hero-grid{
+      display:grid;
+      gap:20px;
+      align-items:center;
+    }
+    @media (min-width:900px){
+      .hero-grid{grid-template-columns:.9fr 1.1fr}
+    }
+
+    /* LEFT: PORTRAIT */
+    .portrait-card{
+      border-radius:var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(16,18,24,.45);
+      backdrop-filter:blur(14px);
+      box-shadow:var(--shadow);
+      padding:18px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .portrait-frame{
+      width:100%;
+      max-width:420px;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.25);
+      box-shadow:0 18px 50px rgba(0,0,0,.45);
+    }
+
+    /* NO CROPPING — EVER */
+    .portrait-frame img{
+      width:100%;
+      height:auto;
+      display:block;
+      object-fit:contain;
+    }
+
+    /* RIGHT: COPY */
+    .hero-copy{
+      border-radius:var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(16,18,24,.50);
+      backdrop-filter:blur(14px);
+      box-shadow:var(--shadow);
+      padding:24px;
+    }
+
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(0,0,0,.28);
+      border:1px solid rgba(255,255,255,.12);
+      font-weight:800;
+      font-size:13px;
+      color:rgba(238,242,248,.88);
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size:52px;
+      line-height:1.02;
+      letter-spacing:-.9px;
+    }
+
+    .sub{
+      color:rgba(238,242,248,.82);
+      font-size:16.5px;
+      max-width:720px;
+    }
+
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+
+    .btn{
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+    }
+
+    .primary{
+      border:none;
+      color:#07090c;
+      background:linear-gradient(135deg,var(--violet),var(--amber));
+      box-shadow:0 16px 60px rgba(184,107,255,.18);
+    }
+
+    section{padding:40px 0}
+    h2{font-size:28px;margin-bottom:10px}
+    .muted{color:var(--muted)}
+
+    .roster{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .chip{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+      display:flex;
+      gap:8px;
+    }
+
+    footer{
+      padding:26px 0 36px;
+      text-align:center;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.06);
+      margin-top:18px;
+    }
+
+    @media (max-width:900px){
+      nav{display:none}
+      h1{font-size:42px}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <a class="brand" href="#top"><span class="brand-dot"></span>johnnys.exotics</a>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#crew">Collection</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="follow" href="https://instagram.com/johnnys.exotics" target="_blank">Follow</a>
+</header>
+
+<main id="top" class="wrap">
+
+<section class="hero">
+  <div class="hero-grid">
+
+    <!-- LEFT: PORTRAIT -->
+    <div class="portrait-card">
+      <div class="portrait-frame">
+        <img src="assets/images/hero.jpg" alt="Johnny in the reptile room with some of the animals">
+      </div>
+    </div>
+
+    <!-- RIGHT: TEXT -->
+    <div class="hero-copy">
+      <span class="pill">Sparks, Nevada • Reptile Room</span>
+      <h1>Respectful husbandry.<br>Real reptile life.</h1>
+      <p class="sub">
+        Johnny’s Exotics is a family-run reptile room led by Johnny (11).
+        We share the routines, the builds, and the learning curve — welfare-first —
+        while building toward custom habitat design and a future shop.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="https://instagram.com/johnnys.exotics" target="_blank">Follow on Instagram</a>
+        <a class="btn" href="#crew">Meet the crew</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <h2>Who we are</h2>
+  <p>
+    We’re a Sparks, Nevada reptile room built around calm handling,
+    clean environments, and consistent routines.
+  </p>
+  <p class="muted"><strong>Education-first. Animal welfare always.</strong></p>
+</section>
+
+<section id="crew">
+  <h2>Our inhabitants</h2>
+  <div class="roster">
+    <div class="chip"><strong>Coco</strong><span>Ball Python</span></div>
+    <div class="chip"><strong>Py</strong><span>Ball Python</span></div>
+    <div class="chip"><strong>Ace</strong><span>Ackie Monitor</span></div>
+    <div class="chip"><strong>Rango</strong><span>Veiled Chameleon</span></div>
+    <div class="chip"><strong>Cheddar</strong><span>Bearded Dragon</span></div>
+    <div class="chip"><strong>Woody</strong><span>Gargoyle Gecko</span></div>
+    <div class="chip"><strong>Rex</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>Doty</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>Sunny</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>Domino</strong><span>Leopard Gecko</span></div>
+    <div class="chip"><strong>Ghost</strong><span>Leopard Gecko</span></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p><a href="https://instagram.com/johnnys.exotics" target="_blank"><strong>@johnnys.exotics</strong></a></p>
+</section>
+
+<footer>
+  © <span id="year"></span> Johnny’s Exotics • Sparks, NV
+</footer>
+
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
