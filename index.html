@@ -13,13 +13,12 @@
   <style>
     :root{
       --bg:#07090c;
-      --panel:rgba(16,18,24,.65);
+      --wall:#e9efe9;
       --text:#eef2f8;
       --muted:#aeb7c6;
 
       --violet:#b86bff;
       --amber:#ffb24a;
-      --green:#52d08f;
 
       --radius:20px;
       --radius2:28px;
@@ -40,8 +39,18 @@
       overflow-x:hidden;
     }
 
-    /* SCULPTED MONSTERA DECOR — SOFT, MODERN, LIGHT */
+    /* LIGHT WALL BACKDROP */
     body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      background:
+        radial-gradient(1200px 800px at 50% 30%, #f4f8f4, var(--wall));
+    }
+
+    /* MONSTERA WALL DECOR */
+    body::after{
       content:"";
       position:fixed;
       inset:-120px;
@@ -49,16 +58,16 @@
       pointer-events:none;
 
       background:
-        radial-gradient(420px 360px at 15% 18%, rgba(120,220,170,.28), transparent 60%),
-        radial-gradient(380px 320px at 82% 22%, rgba(140,230,185,.22), transparent 62%),
-        radial-gradient(520px 440px at 70% 68%, rgba(90,200,150,.18), transparent 65%),
-        radial-gradient(260px 220px at 28% 72%, rgba(160,240,200,.20), transparent 60%);
+        radial-gradient(420px 360px at 18% 22%, rgba(90,170,120,.55), transparent 62%),
+        radial-gradient(380px 320px at 78% 20%, rgba(110,190,140,.45), transparent 64%),
+        radial-gradient(520px 440px at 68% 70%, rgba(80,160,120,.40), transparent 66%),
+        radial-gradient(260px 220px at 30% 72%, rgba(140,210,170,.42), transparent 60%);
 
       filter:
-        blur(2px)
+        blur(3px)
         drop-shadow(0 18px 22px rgba(0,0,0,.35));
 
-      opacity:.22;
+      opacity:.9;
     }
 
     header{
@@ -119,16 +128,18 @@
       .hero-grid{grid-template-columns:.9fr 1.1fr}
     }
 
-    .portrait-card{
+    .portrait-card,
+    .hero-copy,
+    section{
+      background:rgba(7,9,12,.82);
       border-radius:var(--radius2);
       border:1px solid rgba(255,255,255,.10);
-      background:rgba(16,18,24,.45);
       backdrop-filter:blur(14px);
       box-shadow:var(--shadow);
-      padding:18px;
-      display:flex;
-      justify-content:center;
+      padding:24px;
     }
+
+    section{margin-top:26px}
 
     .portrait-frame{
       width:100%;
@@ -137,7 +148,6 @@
       overflow:hidden;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(0,0,0,.25);
-      box-shadow:0 18px 50px rgba(0,0,0,.45);
     }
 
     .portrait-frame img{
@@ -147,18 +157,8 @@
       object-fit:contain;
     }
 
-    .hero-copy{
-      border-radius:var(--radius2);
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(16,18,24,.50);
-      backdrop-filter:blur(14px);
-      box-shadow:var(--shadow);
-      padding:26px;
-    }
-
     .pill{
       display:inline-flex;
-      gap:8px;
       padding:8px 12px;
       border-radius:999px;
       background:rgba(0,0,0,.28);
@@ -171,58 +171,18 @@
       margin:14px 0 10px;
       font-size:52px;
       line-height:1.02;
-      letter-spacing:-.9px;
     }
 
-    .sub{
-      color:rgba(238,242,248,.82);
-      font-size:16.5px;
-      max-width:720px;
-    }
-
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-
-    .btn{
-      padding:12px 18px;
-      border-radius:999px;
-      font-weight:900;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-    }
-
-    .primary{
-      border:none;
-      color:#07090c;
-      background:linear-gradient(135deg,var(--violet),var(--amber));
-      box-shadow:0 16px 60px rgba(184,107,255,.18);
-    }
-
-    section{padding:44px 0}
     h2{font-size:28px;margin-bottom:10px}
     .muted{color:var(--muted)}
-
-    .roster{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .chip{
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.03);
-      display:flex;
-      gap:8px;
-    }
 
     footer{
       padding:26px 0 36px;
       text-align:center;
       color:var(--muted);
       border-top:1px solid rgba(255,255,255,.06);
-      margin-top:18px;
+      margin-top:30px;
+      background:rgba(7,9,12,.85);
     }
 
     @media (max-width:900px){
@@ -233,8 +193,9 @@
 </head>
 
 <body>
+
 <header>
-  <a class="brand" href="#top"><span class="brand-dot"></span>johnnys.exotics</a>
+  <a class="brand" href="#"><span class="brand-dot"></span>johnnys.exotics</a>
   <nav>
     <a href="#about">About</a>
     <a href="#crew">Collection</a>
@@ -243,81 +204,46 @@
   <a class="follow" href="https://instagram.com/johnnys.exotics" target="_blank">Follow</a>
 </header>
 
-<main id="top" class="wrap">
+<main class="wrap">
 
 <section class="hero">
   <div class="hero-grid">
-
     <div class="portrait-card">
       <div class="portrait-frame">
-        <img src="assets/images/hero.jpg" alt="Johnny in the reptile room with some of the animals">
+        <img src="assets/images/hero.jpg" alt="Johnny in the reptile room">
       </div>
     </div>
 
     <div class="hero-copy">
       <span class="pill">Sparks, Nevada • Reptile Room</span>
       <h1>Respectful husbandry.<br>Real reptile life.</h1>
-      <p class="sub">
+      <p>
         Johnny’s Exotics is a family-run reptile room led by Johnny (11).
-        We share the routines, the builds, and the learning curve — welfare-first —
-        while building toward custom habitat design and a future shop.
+        We share the routines, the builds, and the learning curve — welfare-first.
       </p>
-      <div class="actions">
-        <a class="btn primary" href="https://instagram.com/johnnys.exotics" target="_blank">Follow on Instagram</a>
-        <a class="btn" href="#crew">Meet the crew</a>
-      </div>
     </div>
-
   </div>
 </section>
 
 <section id="about">
   <h2>Who we are</h2>
-  <p>
-    We’re a Sparks, Nevada–based reptile room built around calm handling,
-    clean environments, and consistent routines.
-  </p>
-  <p class="muted"><strong>Education-first. Animal welfare always.</strong></p>
-</section>
-
-<section id="crew">
-  <h2>Our inhabitants</h2>
-  <div class="roster">
-    <div class="chip"><strong>Coco</strong><span>Ball Python</span></div>
-    <div class="chip"><strong>Py</strong><span>Ball Python</span></div>
-    <div class="chip"><strong>Ace</strong><span>Ackie Monitor</span></div>
-    <div class="chip"><strong>Rango</strong><span>Veiled Chameleon</span></div>
-    <div class="chip"><strong>Cheddar</strong><span>Bearded Dragon</span></div>
-    <div class="chip"><strong>Woody</strong><span>Gargoyle Gecko</span></div>
-    <div class="chip"><strong>Rex</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>Doty</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>Sunny</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>Domino</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>Ghost</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>Stormy</strong><span>Leopard Gecko</span></div>
-    <div class="chip"><strong>Fireball</strong><span>Corn Snake</span></div>
-    <div class="chip"><strong>Diablo</strong><span>Fireleg Tarantula</span></div>
-    <div class="chip"><strong>Fuego</strong><span>Redknee Tarantula</span></div>
-    <div class="chip"><strong>Smiley</strong><span>Regal Jumping Spider</span></div>
-    <div class="chip"><strong>Hershey</strong><span>Giant Chocolate Millipede</span></div>
-    <div class="chip"><strong>Tank</strong><span>Crested Gecko</span></div>
-  </div>
+  <p>Calm handling. Clean environments. Education-first.</p>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p><a href="https://instagram.com/johnnys.exotics" target="_blank"><strong>@johnnys.exotics</strong></a></p>
+  <p><strong>@johnnys.exotics</strong></p>
 </section>
 
 <footer>
   © <span id="year"></span> Johnny’s Exotics • Sparks, NV
 </footer>
 
-</main>
-
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
+
 
